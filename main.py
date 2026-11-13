@@ -8,6 +8,7 @@ def out_dir():
     for var in ("MAKEFUN_OUTPUT_DIR", "OUTPUT_DIR", "MAKEFUN_OUT"):
         v = os.environ.get(var)
         if v:
+            os.makedirs(v, exist_ok=True)
             return v
     for cand in ("/output", os.path.join(os.getcwd(), "output"),
                  os.path.dirname(os.path.abspath(__file__))):
